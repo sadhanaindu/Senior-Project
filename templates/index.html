@@ -1,0 +1,12 @@
+<!-- HTML template for the flask app. 
+This is the interface where the video will run and 
+expressions will be detected. Other than that, nothing much over here. -->
+
+<html>
+  <head>
+    <title>Face expression recognition</title>
+  </head>
+  <body>
+    <img id="bg" width=1200px height=900px src="{{ url_for('video_feed') }}">
+  </body>
+</html>
