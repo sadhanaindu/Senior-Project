@@ -33,7 +33,7 @@ FRAME_WINDOW = st.image([])
 c = cv2.VideoCapture(0)
 
 if(submit):
-    st.video("https://www.youtube.com/watch?v=5DqTuWve9t8&ab_channel=Calm")
+    
     #show or hide video after imbedding. No need to refresh
     while times >= 0:
         _, fr = c.read()
@@ -52,9 +52,13 @@ if(submit):
                 time.sleep(1)
                 excersise.container().warning("Keep taking the exam!")
                 
+
             else:
                 excersise.container().warning("Do the breathing excersise found below!")
+                placeholder.video("https://www.youtube.com/watch?v=5DqTuWve9t8&ab_channel=Calm")
                 time.sleep(35)
+                placeholder.empty()
+                
                 
             
             times = times - 1
