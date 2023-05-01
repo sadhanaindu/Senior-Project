@@ -2,6 +2,7 @@ import streamlit as st
 import time
 import numpy as np
 import cv2
+import random
 
 import os
 cwd = os.getcwd() # This fn will return the Current Working Directory
@@ -25,6 +26,12 @@ test_sad = os.listdir(paths)
 len_sad = len(test_sad)
 # Add the other directories if needed. 
 
+def file_split():
+    if random.random() < 0.8:
+        return 1
+    else:
+        return 0
+
 st.set_page_config(page_title="interactive")
 st.sidebar.header("Take a picture")
 
@@ -46,8 +53,13 @@ while toggle_state:
         cv2_img = cv2.imdecode(np.frombuffer(picture.getbuffer(), np.uint8), cv2.IMREAD_COLOR)
         cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
         roi = cv2.resize(cv2_img, (48, 48))
-        filename = os.path.join('test/neutral', 'neutral_{}.jpg'.format(moment))
-        cv2.imwrite(filename, roi)
+        place_neutral = file_split()
+        if place_neutral == 1:
+            filename = os.path.join('train/neutral', 'neutral_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
+        else:
+            filename = os.path.join('test/neutral', 'neutral_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Neutral Photo {}'.format(count_neutral), key='button{}'.format(neutral_button_count + 1))
 
 #while st.button('Take Photo {}'.format(count_neutral), key='button{}'.format(neutral_button_count)):
@@ -81,25 +93,17 @@ while toggle_state:
         cv2_img = cv2.imdecode(np.frombuffer(picture.getbuffer(), np.uint8), cv2.IMREAD_COLOR)
         cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
         roi = cv2.resize(cv2_img, (48, 48))
-        filename = os.path.join('test/angry', 'angry_{}.jpg'.format(moment))
-        cv2.imwrite(filename, roi)
-        #path = "/test/"
-        #sti = str(count_angry) # ?? 
-        #cv2.imwrite(sti + '.jpg', roi)
-        #count_angry = count_angry + 1
+        place_angry = file_split()
+        if place_angry == 1:
+            filename = os.path.join('train/angry', 'angry_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
+        else:
+            filename = os.path.join('test/angry', 'angry_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Angry Photo {}'.format(count_angry), key='angry_button{}'.format(angry_button_count + 1))
     count_angry += 1
     angry_button_count += 1
-    # moment = test_angry[count_angry]
-    # cv2_img = cv2.imdecode(np.frombuffer(picture.getbuffer(), np.uint8), cv2.IMREAD_COLOR)
-    # cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
-    # roi = cv2.resize(cv2_img, (48, 48))
-    # moment = "/test/angry/" + moment
-    # moment_path = cwd + moment
-    # st.markdown(moment)
-    # os.remove(moment_path)
-    # cv2.imwrite(moment, roi)
-    # count_angry = count_angry + 1
+
 
 st.markdown("# Take a sad picture")
 count_sad = 0
@@ -113,8 +117,13 @@ while toggle_state:
         cv2_img = cv2.imdecode(np.frombuffer(picture.getbuffer(), np.uint8), cv2.IMREAD_COLOR)
         cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
         roi = cv2.resize(cv2_img, (48, 48))
-        filename = os.path.join('test/sad', 'sad_{}.jpg'.format(moment))
-        cv2.imwrite(filename, roi)
+        place_sad = file_split()
+        if place_sad == 1:
+            filename = os.path.join('train/sad', 'sad_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
+        else:
+            filename = os.path.join('test/sad', 'sad_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Sad Photo {}'.format(count_sad), key='sad_button{}'.format(sad_button_count + 1))
     count_sad += 1
     sad_button_count += 1
@@ -131,8 +140,13 @@ while toggle_state:
         cv2_img = cv2.imdecode(np.frombuffer(picture.getbuffer(), np.uint8), cv2.IMREAD_COLOR)
         cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
         roi = cv2.resize(cv2_img, (48, 48))
-        filename = os.path.join('test/surprise', 'surprised_{}.jpg'.format(moment))
-        cv2.imwrite(filename, roi)
+        place_surprised = file_split()
+        if place_surprised == 1:
+            filename = os.path.join('train/surprise', 'surprised_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
+        else:
+            filename = os.path.join('test/surprise', 'surprised_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Surprised Photo {}'.format(count_surprised), key='surprised_button{}'.format(surprised_button_count + 1))
     count_surprised += 1
     surprised_button_count += 1
@@ -149,8 +163,13 @@ while toggle_state:
         cv2_img = cv2.imdecode(np.frombuffer(picture.getbuffer(), np.uint8), cv2.IMREAD_COLOR)
         cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
         roi = cv2.resize(cv2_img, (48, 48))
-        filename = os.path.join('test/fear', 'fear_{}.jpg'.format(moment))
-        cv2.imwrite(filename, roi)
+        place_fear = file_split()
+        if place_fear == 1:
+            filename = os.path.join('train/fear', 'fear_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
+        else:
+            filename = os.path.join('test/fear', 'fear_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Fearful Photo {}'.format(count_fear), key='fear_button{}'.format(fear_button_count + 1))
     count_fear += 1
     fear_button_count += 1        
@@ -167,8 +186,13 @@ while toggle_state:
         cv2_img = cv2.imdecode(np.frombuffer(picture.getbuffer(), np.uint8), cv2.IMREAD_COLOR)
         cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
         roi = cv2.resize(cv2_img, (48, 48))
-        filename = os.path.join('test/happy', 'happy_{}.jpg'.format(moment))
-        cv2.imwrite(filename, roi)
+        place_happy = file_split()
+        if place_happy == 1:
+            filename = os.path.join('train/happy', 'happy_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
+        else:
+            filename = os.path.join('test/happy', 'happy_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Happy Photo {}'.format(count_happy), key='happy_button{}'.format(happy_button_count + 1))
     count_happy += 1
     happy_button_count += 1
@@ -185,12 +209,14 @@ while toggle_state:
         cv2_img = cv2.imdecode(np.frombuffer(picture.getbuffer(), np.uint8), cv2.IMREAD_COLOR)
         cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
         roi = cv2.resize(cv2_img, (48, 48))
-        filename = os.path.join('test/disgust', 'disgusted_{}.jpg'.format(moment))
-        cv2.imwrite(filename, roi)
+        place_disgusted = file_split()
+        if place_disgusted == 1:
+            filename = os.path.join('train/disgust', 'disgusted_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
+        else:
+            filename = os.path.join('test/disgust', 'disgusted_{}.jpg'.format(moment))
+            cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Disgusted Photo {}'.format(count_disgusted), key='disgusted_button{}'.format(disgusted_button_count + 1))
     count_disgusted += 1
     disgusted_button_count += 1
-
-# Split images into 80% train and 20% test. 
  
-
