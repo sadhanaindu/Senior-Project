@@ -55,10 +55,10 @@ while toggle_state:
         roi = cv2.resize(cv2_img, (48, 48))
         place_neutral = file_split()
         if place_neutral == 1:
-            filename = os.path.join('train/neutral', 'neutral_{}.jpg'.format(moment))
+            filename = os.path.join('user_train/neutral', 'neutral_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
         else:
-            filename = os.path.join('test/neutral', 'neutral_{}.jpg'.format(moment))
+            filename = os.path.join('user_test/neutral', 'neutral_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Neutral Photo {}'.format(count_neutral), key='button{}'.format(neutral_button_count + 1))
 
@@ -95,10 +95,10 @@ while toggle_state:
         roi = cv2.resize(cv2_img, (48, 48))
         place_angry = file_split()
         if place_angry == 1:
-            filename = os.path.join('train/angry', 'angry_{}.jpg'.format(moment))
+            filename = os.path.join('user_train/angry', 'angry_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
         else:
-            filename = os.path.join('test/angry', 'angry_{}.jpg'.format(moment))
+            filename = os.path.join('user_test/angry', 'angry_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Angry Photo {}'.format(count_angry), key='angry_button{}'.format(angry_button_count + 1))
     count_angry += 1
@@ -119,10 +119,10 @@ while toggle_state:
         roi = cv2.resize(cv2_img, (48, 48))
         place_sad = file_split()
         if place_sad == 1:
-            filename = os.path.join('train/sad', 'sad_{}.jpg'.format(moment))
+            filename = os.path.join('user_train/sad', 'sad_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
         else:
-            filename = os.path.join('test/sad', 'sad_{}.jpg'.format(moment))
+            filename = os.path.join('user_test/sad', 'sad_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Sad Photo {}'.format(count_sad), key='sad_button{}'.format(sad_button_count + 1))
     count_sad += 1
@@ -142,10 +142,10 @@ while toggle_state:
         roi = cv2.resize(cv2_img, (48, 48))
         place_surprised = file_split()
         if place_surprised == 1:
-            filename = os.path.join('train/surprise', 'surprised_{}.jpg'.format(moment))
+            filename = os.path.join('user_train/surprise', 'surprised_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
         else:
-            filename = os.path.join('test/surprise', 'surprised_{}.jpg'.format(moment))
+            filename = os.path.join('user_test/surprise', 'surprised_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Surprised Photo {}'.format(count_surprised), key='surprised_button{}'.format(surprised_button_count + 1))
     count_surprised += 1
@@ -165,10 +165,10 @@ while toggle_state:
         roi = cv2.resize(cv2_img, (48, 48))
         place_fear = file_split()
         if place_fear == 1:
-            filename = os.path.join('train/fear', 'fear_{}.jpg'.format(moment))
+            filename = os.path.join('user_train/fear', 'fear_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
         else:
-            filename = os.path.join('test/fear', 'fear_{}.jpg'.format(moment))
+            filename = os.path.join('user_test/fear', 'fear_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Fearful Photo {}'.format(count_fear), key='fear_button{}'.format(fear_button_count + 1))
     count_fear += 1
@@ -188,10 +188,10 @@ while toggle_state:
         roi = cv2.resize(cv2_img, (48, 48))
         place_happy = file_split()
         if place_happy == 1:
-            filename = os.path.join('train/happy', 'happy_{}.jpg'.format(moment))
+            filename = os.path.join('user_train/happy', 'happy_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
         else:
-            filename = os.path.join('test/happy', 'happy_{}.jpg'.format(moment))
+            filename = os.path.join('user_test/happy', 'happy_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Happy Photo {}'.format(count_happy), key='happy_button{}'.format(happy_button_count + 1))
     count_happy += 1
@@ -211,10 +211,10 @@ while toggle_state:
         roi = cv2.resize(cv2_img, (48, 48))
         place_disgusted = file_split()
         if place_disgusted == 1:
-            filename = os.path.join('train/disgust', 'disgusted_{}.jpg'.format(moment))
+            filename = os.path.join('user_train/disgust', 'disgusted_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
         else:
-            filename = os.path.join('test/disgust', 'disgusted_{}.jpg'.format(moment))
+            filename = os.path.join('user_test/disgust', 'disgusted_{}.jpg'.format(moment))
             cv2.imwrite(filename, roi)
     toggle_state = st.checkbox('Take Disgusted Photo {}'.format(count_disgusted), key='disgusted_button{}'.format(disgusted_button_count + 1))
     count_disgusted += 1
