@@ -3,6 +3,8 @@ import time
 import numpy as np
 import cv2
 import random
+import importlib
+import subprocess
 
 import os
 cwd = os.getcwd() # This fn will return the Current Working Directory
@@ -219,4 +221,12 @@ while toggle_state:
     toggle_state = st.checkbox('Take Disgusted Photo {}'.format(count_disgusted), key='disgusted_button{}'.format(disgusted_button_count + 1))
     count_disgusted += 1
     disgusted_button_count += 1
- 
+
+def run_notebook():
+    command = 'jupyter notebook Facial_Expression_Training.ipynb' 
+    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+    output, error = process.communicate()
+
+if st.button("Retrain", key="retrain"):
+    run_notebook()
+
