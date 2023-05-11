@@ -7,6 +7,7 @@ from PIL import Image
 import numpy as np
 import time
 from streamlit.components.v1 import html
+import random
 
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -54,11 +55,23 @@ if(submit):
                 
 
             else:
-                excersise.container().warning("Do the breathing excersise found below!")
-                placeholder.video("https://www.youtube.com/watch?v=5DqTuWve9t8&ab_channel=Calm")
-                time.sleep(35)
-                placeholder.empty()
+                excersise.container().warning("Do the breathing exercise found below!")
+                vid = random.randint(1, 3)
+                if (vid == 1):
+                    placeholder.video("https://www.youtube.com/watch?v=5DqTuWve9t8&ab_channel=Calm")
+                    time.sleep(35)
+                    placeholder.empty()
                 
+                if (vid == 2):
+                    placeholder.video("https://www.youtube.com/watch?v=xbF4NBTukAI")
+                    time.sleep(90)
+                    placeholder.empty()
+                
+                if (vid == 3):
+                    placeholder.video("https://www.youtube.com/watch?v=uxayUBd6T7M")
+                    time.sleep(60)
+                    placeholder.empty()
+            
                 
             
             times = times - 1
