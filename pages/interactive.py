@@ -222,11 +222,13 @@ while toggle_state:
     count_disgusted += 1
     disgusted_button_count += 1
 
-def run_notebook():
-    command = 'jupyter notebook Facial_Expression_Training.ipynb' 
-    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-    output, error = process.communicate()
+#def run_notebook():
+#    command = 'jupyter notebook Facial_Expression_Training.ipynb' 
+#    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+#    output, error = process.communicate()
 
 if st.button("Retrain", key="retrain"):
-    run_notebook()
+    #run_notebook()
+    module = importlib.import_module("Facial_Expression_Training")
+    module.main()
 
